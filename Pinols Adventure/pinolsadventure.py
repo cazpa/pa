@@ -23,6 +23,18 @@ import time
 """
 OBJECTS (classes and functions)
 """
+# CHARACTERS
+mainCharacterImg = pygame.image.load('assets/pepo.png')
+demonLeftImg = pygame.image.load('assets/demon.png')
+demonRightImg = pygame.image.load('assets/demon_right.png')
+
+class Background(pygame.sprite.Sprite):
+    def __init__(self, image_file, location):
+        pygame.sprite.Sprite.__init__(self) # Call Sprite initializer
+        self.image = pygame.image.load(image_file)
+        self.rect = self.image.get_rect()
+        self.rect.left, self.rect.top = location
+
 def text_objects(text, color, size):
     if size == "small":
         textSurface = smallfont.render(text, True, color)
@@ -30,23 +42,68 @@ def text_objects(text, color, size):
         textSurface = medfont.render(text, True, color)
     elif size == "large":
         textSurface = largefont.render(text, True, color)
+    elif size == "dialogue":
+        textSurface = dialoguefont.render(text, True, color)
 
     return textSurface, textSurface.get_rect()
 
-def message_to_screen(msg, color, y_displace = 0, size = "small"):
+def message_to_screen(msg, color, x_displace = 0, y_displace = 0, size = "small"):
     textSurf, textRect = text_objects(msg, color, size)
-    textRect.center = (display_width / 2), (display_height / 2) + y_displace
+    textRect.center = (display_width / 2) + x_displace, (display_height / 2) + y_displace
     world.blit(textSurf, textRect)
 
 def game_intro():
     intro = True
     while intro:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_n:
+                    L1_cutscene()
+                    intro = False
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    quit()
+
         world.fill(color_darkgray)
-        message_to_screen("Piñol's adventure", color_red, -100, "large")
-        message_to_screen("This is Red Points. ", color_red, 0, "medium")
+        message_to_screen("Piñol's adventure", color_red, 0, -100, "large")
+        message_to_screen("This is Red Points. But in Piñol's mad head.", color_red, 0, 0, "medium")
+        message_to_screen("You're schizophrenic. Haunted by your voices. Your lust overcomes you...", color_red, 0, 30, "small")
+        message_to_screen("All these years, working in Red Points, you've always been recognized as one badass motherfucker.", color_red, 0, 55, "small")
+        message_to_screen("But also a crazy motherfucker. Blood. Gore. Kidnapping. Murder. You think about it. You dream about it.", color_red, 0, 80, "small")
+        message_to_screen("What are you going to do about it?", color_red, 0, 105, "small")
+        message_to_screen("Press [N] to start the game.", color_white, 0, 300, "small")
         pygame.display.update()
-        time.sleep(2)
-        message_to_screen("But in Piñol's mad head...", color_red, 0, "small")
+
+def L1_cutscene():
+    L1_cs = True
+    mainCharX = 30
+    mainCharY = display_height - 416
+    demonCharX = 600
+    demonCharY = 300
+
+    while L1_cs:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    quit()
+
+        BG = Background('assets/L1_bg.jpg', [0, 0])
+        world.fill([255, 255, 255])
+        world.blit(BG.image, BG.rect)
+        world.blit(mainCharacterImg, (mainCharX, mainCharY))
+        world.blit(demonLeftImg, (demonCharX, demonCharY))
+        pygame.display.update()
+        message_to_screen("Pepo: What is this...", color_white, 0, 330, "dialogue")
+        # Add delay
+        message_to_screen("Voice: Your dome. Your head. Enter.", color_white, 300, -100, "dialogue")
+
         pygame.display.update()
 
 """
@@ -65,9 +122,10 @@ color_black = (0, 0, 0)
 color_red = (255, 0, 0)
 color_green = (0, 155, 0)
 
-smallfont = pygame.font.SysFont(None, 25)
+smallfont = pygame.font.SysFont(None, 26)
 medfont = pygame.font.SysFont(None, 45)
 largefont = pygame.font.SysFont(None, 80)
+dialoguefont = pygame.font.SysFont(None, 30)
 
 
 world = pygame.display.set_mode((display_width, display_height))
@@ -80,7 +138,8 @@ gameExit = False
 while not gameExit:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit(); sys.exit()
+            pygame.quit()
+            sys.exit()
             gameExit = True
 
         if event.type == pygame.KEYDOWN:
@@ -90,4 +149,5 @@ while not gameExit:
                 gameExit = True
     game_intro()
     pygame.display.update()
-clock.tick(fps)
+    L1_cutscene()
+    pygame.display.update()
