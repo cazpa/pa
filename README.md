@@ -28,11 +28,3 @@ git add [path_to_changed_directories]/*
 git commit -am "PA-XXXX Initial implementation"
 git push --set-upstream origin developement/PA-XXX
 ```
-
-
-## Task List
-- [ ] Finish documentation
-- [ ] Design characters
-- [ ] Create a start menu
-- [ ] Create the intro of the game
-- [ ] Create the first level of the game
