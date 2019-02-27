@@ -6,7 +6,12 @@
 - pikselapp - The pixel sprite editor used
 
 ## Using This Repo
-... Steps to be added.
+1. Open the Terminal and execute the following command:
+`mkdir ~/repos`
+2. Next, you clone the git:
+`git clone git@github.com:cazpa/pa.git`
+3. Go into `~/repos/pa` and switch from the master branch to `developement`:
+`git checkout developement`
 
 ## Task List
 - [ ] Finish documentation
