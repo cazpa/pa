@@ -1,5 +1,5 @@
 # Piñol's Adventure
-[write short description of the game's concept here]
+[write the description of the game's concept here]
 
 ## Developed With
 - [Godot](https://www.godot.com) - The DE used
