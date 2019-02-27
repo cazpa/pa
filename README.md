@@ -1,4 +1,4 @@
-# Piñol's Adventure
+# Piñol's Adventure: Concept
 You start the game as Pepo. The intro begins with Pepo having a nightmare (nightmares are repeated thruoghout the game). Pepo eventually cracks the meaning of these nightmares, as he ends up with a number: 187. The exact number of employees in the company.
 The mission is to obliberate them all.
 
