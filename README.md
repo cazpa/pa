@@ -24,6 +24,7 @@
 
 Once you have made your changes and wish to upload it to the project, use the following line:
 ```
+git add [path_to_changed_directories]/*
 git commit -am "PA-XXXX Initial implementation"
 git push --set-upstream origin developement/PA-XXX
 ```
