@@ -2,8 +2,8 @@
 [write short description of the game's concept here]
 
 ## Developed With
-- Godot - The DE used
-- pikselapp - The pixel sprite editor used
+- [Godot](https://www.godot.com) - The DE used
+- [Piskelapp](https://www.piskelapp.com/) - The pixel sprite editor used
 
 ## Using This Repo
 1. Open the Terminal and execute the following command:
