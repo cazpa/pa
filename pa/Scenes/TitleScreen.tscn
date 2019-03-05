@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets/sidecaption.png" type="Texture" id=8]
 [ext_resource path="res://Animations/FadeIn.tscn" type="PackedScene" id=9]
 
-[node name="TitleScreen" type="Control" index="0"]
+[node name="TitleScreen" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -147,27 +147,10 @@ rect_min_size = Vector2( 360, 110 )
 
 [node name="Exit" parent="Menu/CenterRow/Buttons" index="4" instance=ExtResource( 7 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 615.0
 margin_right = 878.0
 margin_bottom = 725.0
 rect_min_size = Vector2( 360, 110 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-flat = true
-align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow" index="1"]
 
